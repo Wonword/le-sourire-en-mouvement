@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faire un don — Le Sourire en Mouvement</title>
+  <meta name="description" content="Faites un don à Le Sourire en Mouvement. 66% de réduction fiscale. 100% de l'impact va aux enfants hospitalisés et personnes fragilisées.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .don-layout {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .don-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 48px 44px;
+      box-shadow: var(--shadow-lg);
+    }
+    .don-card h2 { margin-bottom: .5rem; }
+    .don-card .sub { color: var(--gray); margin-bottom: 2rem; font-size: .95rem; }
+    .frequency-tabs {
+      display: flex;
+      gap: 0;
+      background: var(--bg);
+      border-radius: 50px;
+      padding: 4px;
+      margin-bottom: 2rem;
+    }
+    .frequency-tabs button {
+      flex: 1;
+      padding: .65em 1em;
+      border-radius: 50px;
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--gray);
+      transition: var(--transition);
+    }
+    .frequency-tabs button.active {
+      background: var(--white);
+      color: var(--navy);
+      box-shadow: var(--shadow);
+    }
+    .impact-sidebar {
+      position: sticky;
+      top: 100px;
+    }
+    .impact-box {
+      background: linear-gradient(135deg, var(--navy), var(--purple));
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .impact-box h3 { color: var(--white); margin-bottom: 1rem; font-size: 1.2rem; }
+    .impact-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .impact-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .impact-item__emoji { font-size: 1.4rem; flex-shrink: 0; }
+    .impact-item__text strong { display: block; font-size: .9rem; margin-bottom: .2rem; }
+    .impact-item__text span { font-size: .8rem; color: rgba(255,255,255,.65); line-height: 1.5; }
+    .helloasso-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 1.1em 2em;
+      background: var(--pink);
+      color: var(--white);
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      box-shadow: 0 6px 28px rgba(232,77,138,.40);
+      transition: var(--transition);
+      margin-top: 1rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .helloasso-btn:hover {
+      background: #d63a78;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 36px rgba(232,77,138,.55);
+    }
+    .real-cost-display {
+      background: var(--bg2);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 1.5rem 0;
+      transition: var(--transition);
+    }
+    .real-cost-display .label { color: var(--gray); font-size: .9rem; }
+    .real-cost-display .value { font-size: 1.4rem; font-weight: 800; color: var(--pink); }
+    .real-cost-display .value small { font-size: .7rem; font-weight: 500; color: var(--gray); display: block; text-align: right; }
+    @media (max-width: 900px) {
+      .don-layout { grid-template-columns: 1fr; }
+      .impact-sidebar { position: static; }
+      .don-card { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo">
+      <img src="images/logo.png" alt="Le Sourire en Mouvement">
+    </a>
+    <ul class="navbar__nav">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="presentation.html">Le Projet</a></li>
+      <li><a href="entreprises.html">Entreprises</a></li>
+      <li><a href="particuliers.html">Particuliers</a></li>
+      <li><a href="collectivites.html">Collectivités</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="navbar__cta">
+      <a href="don.html" class="btn btn-primary active">Faire un don</a>
+      <button class="navbar__hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Hero -->
+<section class="page-hero" style="background:linear-gradient(135deg,var(--pink) 0%,var(--purple) 100%)">
+  <div class="container">
+    <span class="section-tag" style="background:rgba(255,255,255,.2);color:var(--white)">❤️ Agir</span>
+    <h1 class="serif">Faire un don</h1>
+    <p>Chaque euro transforme une larme en sourire. Merci pour votre générosité.</p>
+  </div>
+</section>
+
+<!-- Don Form -->
+<section class="section section--bg">
+  <div class="container">
+    <div class="don-layout">
+
+      <!-- Left: Form -->
+      <div class="don-card">
+        <h2>Je soutiens <span class="text-pink">Le Sourire en Mouvement</span></h2>
+        <p class="sub">Choisissez votre fréquence et votre montant. Vous recevrez un reçu fiscal automatiquement.</p>
+
+        <!-- Frequency -->
+        <div class="frequency-tabs">
+          <button class="active" onclick="setFrequency(this,'ponctuel')">Don ponctuel</button>
+          <button onclick="setFrequency(this,'mensuel')">Don mensuel</button>
+        </div>
+
+        <!-- Amounts -->
+        <label style="font-size:.85rem;font-weight:700;color:var(--navy);margin-bottom:.75rem;display:block">Montant de votre don</label>
+        <div class="amount-grid" id="amountGrid">
+          <button class="amount-btn" onclick="selectAmount(this,10)">
+            10 €<span class="real-cost">Coût réel : 3,40 €</span>
+          </button>
+          <button class="amount-btn" onclick="selectAmount(this,25)">
+            25 €<span class="real-cost">Coût réel : 8,50 €</span>
+          </button>
+          <button class="amount-btn active" onclick="selectAmount(this,50)">
+            50 €<span class="real-cost">Coût réel : 17 €</span>
+          </button>
+          <button class="amount-btn" onclick="selectAmount(this,100)">
+            100 €<span class="real-cost">Coût réel : 34 €</span>
+          </button>
+          <button class="amount-btn" onclick="selectAmount(this,200)">
+            200 €<span class="real-cost">Coût réel : 68 €</span>
+          </button>
+          <button class="amount-btn" onclick="selectAmount(this,500)">
+            500 €<span class="real-cost">Coût réel : 170 €</span>
+          </button>
+        </div>
+
+        <!-- Custom amount -->
+        <div class="form-group">
+          <label for="customAmount">Autre montant (€)</label>
+          <input type="number" id="customAmount" placeholder="Saisir un montant personnalisé" min="1" oninput="updateCustomAmount(this.value)">
+        </div>
+
+        <!-- Real cost display -->
+        <div class="real-cost-display" id="realCostBox">
+          <div class="label">
+            <strong style="color:var(--navy);display:block">Coût réel après réduction fiscale</strong>
+            66 % de réduction d'impôt (particuliers)
+          </div>
+          <div class="value">
+            <span id="realCostValue">17 €</span>
+            <small>au lieu de 50 €</small>
+          </div>
+        </div>
+
+        <!-- Tax info -->
+        <div class="tax-badge">
+          <div class="tax-badge__icon">💡</div>
+          <div class="tax-badge__text">
+            <h4>Réduction fiscale de 66 %</h4>
+            <p>Votre don ouvre droit à une réduction d'impôt de <strong>66 % du montant versé</strong>, dans la limite de 20 % de votre revenu imposable. Un reçu fiscal (cerfa) vous sera envoyé automatiquement.</p>
+          </div>
+        </div>
+
+        <!-- HelloAsso CTA -->
+        <a href="#helloasso" class="helloasso-btn" id="donBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Donner 50 € via HelloAsso
+        </a>
+
+        <p style="text-align:center;font-size:.78rem;color:var(--gray);margin-top:1rem">
+          🔒 Paiement sécurisé · Aucune commission prélevée · 100 % pour l'action
+        </p>
+
+        <!-- HelloAsso section notice -->
+        <div id="helloasso" style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--mist)">
+          <p style="font-size:.85rem;color:var(--gray);text-align:center;line-height:1.75">
+            Le bouton ci-dessus vous redirigera vers notre page HelloAsso dès que notre compte sera ouvert (en cours d'immatriculation).<br>
+            <strong style="color:var(--navy)">En attendant, contactez-nous directement</strong> pour effectuer votre don.
+          </p>
+          <a href="contact.html" class="btn btn-navy mt-3" style="display:flex;justify-content:center">Nous contacter pour donner</a>
+        </div>
+      </div>
+
+      <!-- Right: Impact sidebar -->
+      <div class="impact-sidebar">
+        <div class="impact-box">
+          <h3>💛 Avec votre don de <span id="sidebarAmount">50 €</span></h3>
+          <div class="impact-item">
+            <div class="impact-item__emoji">📚</div>
+            <div class="impact-item__text">
+              <strong>2 livres éducatifs</strong>
+              <span>pour la bibliothèque d'un service pédiatrique</span>
+            </div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-item__emoji">🎮</div>
+            <div class="impact-item__text">
+              <strong>1 jeu de société</strong>
+              <span>pour une salle commune d'hôpital</span>
+            </div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-item__emoji">🌟</div>
+            <div class="impact-item__text">
+              <strong>Un sourire durable</strong>
+              <span>utilisé chaque jour par des enfants hospitalisés</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guarantees -->
+        <div style="background:var(--white);border-radius:var(--radius-lg);padding:28px 28px;box-shadow:var(--shadow)">
+          <h4 style="font-size:.9rem;margin-bottom:1.2rem;color:var(--navy)">Nos garanties</h4>
+          <div style="display:flex;flex-direction:column;gap:.9rem">
+            <div style="display:flex;gap:12px;align-items:center">
+              <span style="color:var(--pink);font-size:1.2rem">✓</span>
+              <span style="font-size:.88rem;color:var(--gray)">100 % des fonds vont à l'action</span>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center">
+              <span style="color:var(--pink);font-size:1.2rem">✓</span>
+              <span style="font-size:.88rem;color:var(--gray)">Reçu fiscal envoyé automatiquement</span>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center">
+              <span style="color:var(--pink);font-size:1.2rem">✓</span>
+              <span style="font-size:.88rem;color:var(--gray)">Rapport d'impact après installation</span>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center">
+              <span style="color:var(--pink);font-size:1.2rem">✓</span>
+              <span style="font-size:.88rem;color:var(--gray)">Association loi 1901 déclarée</span>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center">
+              <span style="color:var(--pink);font-size:1.2rem">✓</span>
+              <span style="font-size:.88rem;color:var(--gray)">Paiement 100 % sécurisé via HelloAsso</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Entreprise don -->
+        <div style="background:var(--bg2);border-radius:var(--radius-lg);padding:24px 28px;margin-top:24px;border:1.5px solid var(--mist)">
+          <h4 style="font-size:.9rem;margin-bottom:.5rem;color:var(--navy)">Vous êtes une entreprise ?</h4>
+          <p style="font-size:.83rem;color:var(--gray);line-height:1.6;margin-bottom:1rem">Bénéficiez d'une réduction d'IS de <strong style="color:var(--navy)">60 %</strong> sur vos dons (art. 238 bis CGI).</p>
+          <a href="entreprises.html" class="btn btn-navy" style="font-size:.85rem;padding:.6em 1.4em">En savoir plus →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="images/logo.png" alt="Le Sourire en Mouvement">
+        <p>Nous transformons le mouvement en impact concret pour les publics fragilisés.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">in</a>
+          <a href="#" aria-label="LinkedIn">li</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="presentation.html">Le Projet</a></li>
+          <li><a href="entreprises.html">Entreprises</a></li>
+          <li><a href="particuliers.html">Particuliers</a></li>
+          <li><a href="collectivites.html">Collectivités</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Actions</h4>
+        <ul>
+          <li><a href="don.html">Faire un don</a></li>
+          <li><a href="entreprises.html">Devenir partenaire</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <div class="footer__contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          contact@lesourireenmouvement.fr
+        </div>
+        <a href="don.html" class="btn btn-primary mt-2" style="font-size:.85rem;padding:.65em 1.5em">Faire un don</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2025 Le Sourire en Mouvement — Association loi 1901</span>
+      <span>Apprendre · Bouger · Communiquer · Divertir</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navbar = document.getElementById('navbar');
+  hamburger?.addEventListener('click', () => navbar.classList.toggle('navbar--open'));
+  window.addEventListener('scroll', () => {
+    navbar.style.boxShadow = window.scrollY > 20 ? '0 2px 20px rgba(0,0,0,.10)' : '';
+  });
+
+  let currentAmount = 50;
+
+  function selectAmount(btn, amount) {
+    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('customAmount').value = '';
+    updateAmount(amount);
+  }
+
+  function updateCustomAmount(val) {
+    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+    if (val && val > 0) updateAmount(parseFloat(val));
+  }
+
+  function updateAmount(amount) {
+    currentAmount = amount;
+    const real = Math.round(amount * 0.34 * 100) / 100;
+    document.getElementById('realCostValue').textContent = real.toLocaleString('fr-FR', {minimumFractionDigits: 0}) + ' €';
+    document.querySelector('#realCostBox .value small').textContent = 'au lieu de ' + amount + ' €';
+    document.getElementById('donBtn').textContent = '';
+    document.getElementById('donBtn').innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      Donner ${amount} € via HelloAsso`;
+    document.getElementById('sidebarAmount').textContent = amount + ' €';
+  }
+
+  function setFrequency(btn, type) {
+    document.querySelectorAll('.frequency-tabs button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
